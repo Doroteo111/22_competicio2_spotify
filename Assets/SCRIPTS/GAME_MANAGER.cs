@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro; 
 
 public class GAME_MANAGER : MonoBehaviour
 {
     public AudioClip[] songs;
     public int currentSong;
     private AudioSource _audioSource;
+    public TextMeshProUGUI songText;
 
 
     private void Awake()
@@ -19,6 +21,7 @@ public class GAME_MANAGER : MonoBehaviour
     {
         currentSong = 0; //comença des de sa primera cançó
 
+        UpdateTextSong(); 
     }
 
     public void PlaySong()//si posam més d'un paràmetre no anirà be
@@ -31,22 +34,22 @@ public class GAME_MANAGER : MonoBehaviour
 
     public void NextSong()
     {
-        if (currentSong++ >= songs.Length)
+        if (++currentSong >= songs.Length)
             {
             currentSong = 0;
-            _audioSource.clip = songs[currentSong];
             }
-       PlaySong();
+        UpdateTextSong();
+
     }
 
     public void AntSong()
     {
-        if (currentSong-- < 0)
+        if (--currentSong < 0)
         {
             currentSong = songs.Length-1;
-            _audioSource.clip = songs[currentSong];
         }
-        PlaySong();
+        UpdateTextSong();
+
     }
 
     /*
@@ -63,7 +66,13 @@ public class GAME_MANAGER : MonoBehaviour
     {
         currentSong = Random.Range(0, songs.Length); //triam numero aleatori de cançó
         _audioSource.clip = songs[currentSong]; //asign 
-        PlaySong();
+        UpdateTextSong();
+    }
+
+    private void UpdateTextSong()
+    {
+        songText.text = $"{songs[currentSong].name}";
+
     }
 }
 
