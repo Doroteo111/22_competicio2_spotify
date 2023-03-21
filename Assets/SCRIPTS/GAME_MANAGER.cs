@@ -58,6 +58,13 @@ public class GAME_MANAGER : MonoBehaviour
      *      -cridar PlaySong();
      *      
      */
+
+    public void RandomSong()
+    {
+        currentSong = Random.Range(0, songs.Length); //triam numero aleatori de cançó
+        _audioSource.clip = songs[currentSong]; //asign 
+        PlaySong();
+    }
 }
 
 
