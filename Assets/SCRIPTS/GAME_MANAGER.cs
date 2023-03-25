@@ -5,21 +5,22 @@ using TMPro;
 using UnityEngine.UI;
 
 public class GAME_MANAGER : MonoBehaviour
-{
+{ 
+    //MARIA T'ESTIMAM, PERDÓ PERÒ NO SABEM FER-HO AMB MENOS FUNCIONS SORRY :) (pov:un dissapte de sa nostra vida fent programació)
+
     public AudioClip[] songs;
     public int currentSong;
     private AudioSource _audioSource;
     public TextMeshProUGUI songText;
-    public GameObject disk;
     public bool isPlaying;
     public float speed = 100;
-
     public disco discoScript;
-
     public Sprite[] images;
     public Image foto;
-
     public TextMeshProUGUI[] playlistText;
+    public GameObject playlistPANEL;
+    public bool hasClicked;
+    public TextMeshProUGUI playlistTex;
 
     private void Awake()
     {
@@ -33,13 +34,18 @@ public class GAME_MANAGER : MonoBehaviour
         isPlaying = false;
         UpdateTextSong();
         UpdatePlaylistText();
+        UpdateImage();
+
+        //asegurar que no surti es panel des de es principi
+        playlistPANEL.SetActive(false);
+        hasClicked = false;
     }
 
     private void Update()
     {
-        if(isPlaying == true)
+        if(isPlaying == true) //mentre soni una canço es disc se mou
         {
-            discoScript.DiskMovement();
+            discoScript.DiskMovement(); 
         }
     }
 
@@ -101,18 +107,18 @@ public class GAME_MANAGER : MonoBehaviour
         PlaySong(); 
     }
  
-    public void PauseSong()
+    public void PauseSong() //pausa sa cançó i ja no està playing res
     {
         _audioSource.Pause();
         isPlaying = false;
     }
 
-    private void UpdateImage()
+    private void UpdateImage() //refresca sa imatge
     {
         foto.sprite = images[currentSong];
     }
 
-    private void UpdatePlaylistText()
+    private void UpdatePlaylistText() //escrivim tots es nom de ses cançons per ordre segons s'array de cançons
     {
         for(int i=0; i< songs.Length ; i++)
         {
@@ -120,7 +126,121 @@ public class GAME_MANAGER : MonoBehaviour
         }
     }
     
+    public void PlaylistButtonPanel()
+    {
+        if (hasClicked == true) //si ja ha clickat un pic, que veu es panel + canvia es nom des botó 
+        {
+            playlistPANEL.SetActive(false);
+            playlistTex.text = $"playlist";
+            hasClicked = false;
 
+        }
+        else //si no havia pitjat, (no veu es panel) el mostram i canviam es nom des botó a back
+        {
+            playlistPANEL.SetActive(true);
+            playlistTex.text = $"back";
+            hasClicked = true;
+        }
+    }
+
+    public void StopBTTN()
+    {
+        _audioSource.Stop(); //aturam musica del tot
+        isPlaying = false;
+    }
+
+    public void PlaySong0()
+    {
+        //play audioclip 1
+        _audioSource.clip = songs[0]; 
+        _audioSource.Play();
+
+        currentSong = 0; //asignam a piñón es valor de sa cançó
+
+        //refrescam imatge i text
+        UpdateTextSong(); 
+        UpdateImage();
+    }
+    public void PlaySong1()
+    {
+        _audioSource.clip = songs[0];
+        _audioSource.Play();
+        currentSong = 1;
+        UpdateTextSong();
+        UpdateImage();
+    }
+    public void PlaySong2()
+    {
+        _audioSource.clip = songs[2];
+        _audioSource.Play();
+        currentSong = 2;
+        UpdateTextSong();
+        UpdateImage();
+    }
+    public void PlaySong3()
+    {
+        _audioSource.clip = songs[3];
+        _audioSource.Play();
+        currentSong = 3;
+        UpdateTextSong();
+        UpdateImage();
+    }
+    public void PlaySong4()
+    {
+        _audioSource.clip = songs[4];
+        _audioSource.Play();
+        currentSong = 4;
+        UpdateTextSong();
+        UpdateImage();
+    }
+    public void PlaySong5()
+    {
+        _audioSource.clip = songs[5];
+        _audioSource.Play();
+        currentSong = 5;
+        UpdateTextSong();
+        UpdateImage();
+    }
+    public void PlaySong6()
+    {
+        _audioSource.clip = songs[6];
+        _audioSource.Play();
+        currentSong = 6;
+        UpdateTextSong();
+        UpdateImage();
+    }
+    public void PlaySong7()
+    {
+        _audioSource.clip = songs[7];
+        _audioSource.Play();
+        currentSong = 7;
+        UpdateTextSong();
+        UpdateImage();
+    }
+    public void PlaySong8()
+    {
+        _audioSource.clip = songs[8];
+        _audioSource.Play();
+        currentSong = 8;
+        UpdateTextSong();
+        UpdateImage();
+    }
+    public void PlaySong9()
+    {
+        _audioSource.clip = songs[9];
+        _audioSource.Play();
+        currentSong = 9;
+        UpdateTextSong();
+        UpdateImage();
+    }
+    public void PlaySong10()
+    {
+        _audioSource.clip = songs[10];
+        _audioSource.Play();
+        currentSong = 10;
+        UpdateTextSong();
+        UpdateImage();
+    }
 }
 
 
