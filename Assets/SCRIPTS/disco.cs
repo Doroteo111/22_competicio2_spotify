@@ -4,21 +4,16 @@ using UnityEngine;
 
 public class disco : MonoBehaviour
 {
-    public GameObject disc;
-    public float speed = 100;
-    public GAME_MANAGER _gameManager;
-
+    public float speed = 1;
+    //public GAME_MANAGER gameManagerScript;
 
     private void Start()
     {
-        //_gameManager = FindObjectOfType
+        //gameManagerScript = FindObjectOfType<>()
     }
 
-    private void Update()
+    public void DiskMovement()
     {
-        transform.Rotate(Vector3.up, speed * Time.deltaTime);
+        transform.Rotate(Vector3.up, speed * Time.deltaTime * 5);
     }
-    
-
-
 }

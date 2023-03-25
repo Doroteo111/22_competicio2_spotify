@@ -12,25 +12,45 @@ public class GAME_MANAGER : MonoBehaviour
     public TextMeshProUGUI songText;
     public GameObject disk;
     public bool isPlaying;
+    public float speed = 100;
+
+    public disco discoScript;
+
+    public Sprite[] images;
+    public Image foto;
+
+    public TextMeshProUGUI[] playlistText;
 
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
+        discoScript = FindObjectOfType<disco>();
     }
 
     private void Start()
     {
         currentSong = 0; //comença des de sa primera cançó
-        
-        UpdateTextSong(); 
+        isPlaying = false;
+        UpdateTextSong();
+        UpdatePlaylistText();
+    }
+
+    private void Update()
+    {
+        if(isPlaying == true)
+        {
+            discoScript.DiskMovement();
+        }
     }
 
     public void PlaySong()//si posam més d'un paràmetre no anirà be
     {
         _audioSource.clip = songs[currentSong]; //asignar es clip especific que volem (¿Quina cançó volem reproduïr?)
-
         _audioSource.Play();
 
+        isPlaying = true;
+
+        UpdateImage();
     }
 
     public void NextSong()
@@ -80,20 +100,26 @@ public class GAME_MANAGER : MonoBehaviour
         _audioSource.Stop(); //aturam sa cançó que està sonant, perquè reinicia
         PlaySong(); 
     }
-
-    /*
-     * -objete redó (torus aplanat --> prefab)
-     * -script per ell --> transform
-     * -comunicació entres sacripts per :
-     *      - dins sa funció play posam instanciar objecte + color des torus = color current song
-     *      - dins sa funció stop destroy
-     *      
-     */
-
-    private void StartMoving()
+ 
+    public void PauseSong()
     {
-        //while
+        _audioSource.Pause();
+        isPlaying = false;
     }
+
+    private void UpdateImage()
+    {
+        foto.sprite = images[currentSong];
+    }
+
+    private void UpdatePlaylistText()
+    {
+        for(int i=0; i< songs.Length ; i++)
+        {
+            playlistText[i].text = $"{songs[i].name}";
+        }
+    }
+    
 
 }
 
