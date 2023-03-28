@@ -149,96 +149,16 @@ public class GAME_MANAGER : MonoBehaviour
         isPlaying = false;
     }
 
-    public void PlaySong0()
+    public void PlaySong0(int songIdx)
     {
         //play audioclip 1
-        _audioSource.clip = songs[0]; 
+        _audioSource.clip = songs[songIdx]; 
         _audioSource.Play();
 
-        currentSong = 0; //asignam a piñón es valor de sa cançó
+        currentSong = songIdx; //asignam a piñón es valor de sa cançó
 
         //refrescam imatge i text
         UpdateTextSong(); 
-        UpdateImage();
-    }
-    public void PlaySong1()
-    {
-        _audioSource.clip = songs[0];
-        _audioSource.Play();
-        currentSong = 1;
-        UpdateTextSong();
-        UpdateImage();
-    }
-    public void PlaySong2()
-    {
-        _audioSource.clip = songs[2];
-        _audioSource.Play();
-        currentSong = 2;
-        UpdateTextSong();
-        UpdateImage();
-    }
-    public void PlaySong3()
-    {
-        _audioSource.clip = songs[3];
-        _audioSource.Play();
-        currentSong = 3;
-        UpdateTextSong();
-        UpdateImage();
-    }
-    public void PlaySong4()
-    {
-        _audioSource.clip = songs[4];
-        _audioSource.Play();
-        currentSong = 4;
-        UpdateTextSong();
-        UpdateImage();
-    }
-    public void PlaySong5()
-    {
-        _audioSource.clip = songs[5];
-        _audioSource.Play();
-        currentSong = 5;
-        UpdateTextSong();
-        UpdateImage();
-    }
-    public void PlaySong6()
-    {
-        _audioSource.clip = songs[6];
-        _audioSource.Play();
-        currentSong = 6;
-        UpdateTextSong();
-        UpdateImage();
-    }
-    public void PlaySong7()
-    {
-        _audioSource.clip = songs[7];
-        _audioSource.Play();
-        currentSong = 7;
-        UpdateTextSong();
-        UpdateImage();
-    }
-    public void PlaySong8()
-    {
-        _audioSource.clip = songs[8];
-        _audioSource.Play();
-        currentSong = 8;
-        UpdateTextSong();
-        UpdateImage();
-    }
-    public void PlaySong9()
-    {
-        _audioSource.clip = songs[9];
-        _audioSource.Play();
-        currentSong = 9;
-        UpdateTextSong();
-        UpdateImage();
-    }
-    public void PlaySong10()
-    {
-        _audioSource.clip = songs[10];
-        _audioSource.Play();
-        currentSong = 10;
-        UpdateTextSong();
         UpdateImage();
     }
 }
